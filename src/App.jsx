@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import Header from "./components/Header";
 import About from "./components/About";
 import { Programs } from "./components/Programs";
+import PricingSection from "./components/PricingSection";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Hero videoSrc={HeroVideo} />
       <About />
       <Programs />
+      <PricingSection />
     </>
   );
 };

@@ -26,100 +26,6 @@ const imageVariant = {
   },
 };
 
-// export const About = () => {
-//   return (
-//     <section className="bg-black text-white py-20 md:py-28">
-//       <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-//         {/* LEFT CONTENT */}
-//         <motion.div
-//           variants={container}
-//           initial="hidden"
-//           whileInView="show"
-//           viewport={{ once: true, amount: 0.3 }}
-//           className="space-y-6"
-//         >
-//           {/* Section Label */}
-//           <motion.p
-//             variants={item}
-//             className="uppercase tracking-wider text-sm text-gray-400/70"
-//           >
-//             About Fitzone
-//           </motion.p>
-
-//           {/* Heading */}
-//           <motion.h2
-//             variants={item}
-//             className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight"
-//           >
-//             More Than a Gym. <br />A Lifestyle.
-//           </motion.h2>
-
-//           {/* Description */}
-//           <motion.p variants={item} className="text-gray-300 max-w-xl">
-//             We help real people build strength, confidence, and consistency
-//             through expert coaching, proven programs, and a supportive fitness
-//             environment designed for long-term results — not quick fixes.
-//           </motion.p>
-
-//           {/* Feature Highlights */}
-//           <motion.div
-//             variants={item}
-//             className="grid grid-cols-2 gap-4 pt-4 max-w-md"
-//           >
-//             {[
-//               "Certified Trainers",
-//               "Personalized Programs",
-//               "Modern Equipment",
-//               "Supportive Community",
-//             ].map((feature, i) => (
-//               <motion.div
-//                 key={i}
-//                 whileInView={{ opacity: 1, scale: 1 }}
-//                 initial={{ opacity: 0, scale: 0.95 }}
-//                 transition={{ duration: 0.45, ease: "easeOut", delay: i * 0.1 }}
-//                 viewport={{ once: true }}
-//                 className="bg-neutral-800/60 border border-neutral-700 rounded-lg px-4 py-3 text-sm font-medium"
-//               >
-//                 {feature}
-//               </motion.div>
-//             ))}
-//           </motion.div>
-
-//           {/* Optional Soft CTA */}
-//           <motion.div variants={item}>
-//             <button className="mt-6 border border-white/30 text-white px-6 py-3 rounded-lg hover:bg-white hover:text-black transition font-medium">
-//               Learn More About Us
-//             </button>
-//           </motion.div>
-//         </motion.div>
-
-//         {/* RIGHT MEDIA */}
-//         <motion.div
-//           variants={imageVariant}
-//           initial="hidden"
-//           whileInView="show"
-//           viewport={{ once: true, amount: 0.3 }}
-//           className="rounded-2xl overflow-hidden shadow-2xl bg-neutral-800"
-//         >
-//           {/* Replace img with video if you want */}
-//           <img
-//             src={ImageA}
-//             autoPlay
-//             loop
-//             muted
-//             playsInline
-//             className="w-full h-full object-cover"
-//           />
-//         </motion.div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// // export default About;
-
-// import React from "react";
-
 export const About = () => {
   return (
     <section id="about" className="bg-black text-white py-16 sm:py-20 md:py-28">
@@ -140,7 +46,10 @@ export const About = () => {
           </p>
 
           <h2 className="font-extrabold text-2xl sm:text-3xl lg:text-5xl leading-tight">
-            Real Coaches. Real Programs. Real Results.
+            Real Coaches. Real Programs.{" "}
+            <span className="bg-gradient-to-tl from-orange-700 via-orange-400 to-white bg-clip-text text-transparent">
+              Real Results.
+            </span>
           </h2>
 
           <p className="text-gray-300 max-w-xl text-sm sm:text-base">
