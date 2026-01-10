@@ -168,7 +168,7 @@ export const About = () => {
                   delay: i * 0.08,
                 }}
                 viewport={{ once: true }}
-                className="bg-yellow-500/10 border border-orange-400/20 rounded-lg px-4 py-3 text-sm sm:text-base font-medium"
+                className="bg-neutral-500/10 border duration-300 hover:bg-neutral-500/20 border-neutral-400/20 rounded-lg px-4 py-3 text-sm sm:text-base font-medium"
               >
                 {feature}
               </motion.div>

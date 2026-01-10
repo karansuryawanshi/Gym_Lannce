@@ -37,7 +37,7 @@ const Hero = ({ videoSrc }) => {
 
           {/* CTA BUTTONS */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
-            <button className="bg-orange-400/90 hover:bg-orange-400 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-red-400">
+            <button className="bg-neutral-400/50 hover:bg-neutral-400/40 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg focus:outline-none focus:ring-2 focus:ring-neutral-400">
               Book Free Trial
             </button>
 
