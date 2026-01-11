@@ -141,7 +141,10 @@ export default function PricingSection() {
             PRICING PLANS
           </p>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Choose the Plan That Fits Your Goals
+            Choose the Plan That Fits{" "}
+            <span className="bg-gradient-to-tl from-orange-700 via-orange-400 to-white bg-clip-text text-transparent">
+              Your Goals
+            </span>
           </h2>
           <p className="text-gray-400">
             Simple pricing. No hidden fees. Cancel anytime.
