@@ -1,18 +1,31 @@
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
+import { useState } from "react";
 
 export default function ContactFreeTrialSection() {
+  const [success, setSuccess] = useState(false);
+
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors, isValid, isSubmitting },
   } = useForm({ mode: "onChange" });
 
   const onSubmit = (data) => {
-    console.log("Form Data:", data);
-    // 🔗 Connect API / WhatsApp / Email here
+    setSuccess(false);
+
+    // 🔁 Dummy submission simulation
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        console.log("Dummy Submitted Data:", data);
+        setSuccess(true);
+        reset();
+        resolve();
+      }, 1200);
+    });
   };
 
   const requiredFieldsFilled =
@@ -43,86 +56,96 @@ export default function ContactFreeTrialSection() {
 
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* LEFT — FORM */}
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="bg-[#141414] rounded-2xl p-8 space-y-6"
-          >
-            {/* Name */}
-            <div>
-              <label className="text-sm text-gray-300">Full Name *</label>
-              <input
-                type="text"
-                {...register("name", { required: true })}
-                placeholder="Enter your full name"
-                className="mt-2 w-full rounded-lg bg-[#f5f5f5] px-4 py-3 text-black focus:outline-none focus:ring-2 focus:ring-orange-500"
-              />
-              {errors.name && (
-                <p className="text-red-500 text-xs mt-1">Name is required</p>
-              )}
+          {success ? (
+            <div className="flex flex-col justify-center mb-6 rounded-xl text-3xl font-semibold text-center bg-neutral-500/10 border border-neutral-500/30 p-4 text-white">
+              <span className="bg-gradient-to-tl from-orange-700 via-orange-400 to-white bg-clip-text text-transparent">
+                Session booked successfully!{" "}
+              </span>{" "}
+              Our trainer will contact you shortly.
             </div>
-
-            {/* Phone */}
-            <div>
-              <label className="text-sm text-gray-300">Phone Number *</label>
-              <input
-                type="tel"
-                {...register("phone", { required: true })}
-                placeholder="Enter your phone number"
-                className="mt-2 w-full rounded-lg bg-[#f5f5f5] px-4 py-3 text-black focus:outline-none focus:ring-2 focus:ring-orange-500"
-              />
-              {errors.phone && (
-                <p className="text-red-500 text-xs mt-1">
-                  Phone number is required
-                </p>
-              )}
-            </div>
-
-            {/* Email */}
-            <div>
-              <label className="text-sm text-gray-300">Email Address *</label>
-              <input
-                type="email"
-                {...register("email", { required: true })}
-                placeholder="Enter your email"
-                className="mt-2 w-full rounded-lg bg-[#f5f5f5] px-4 py-3 text-black focus:outline-none focus:ring-2 focus:ring-orange-500"
-              />
-              {errors.email && (
-                <p className="text-red-500 text-xs mt-1">Email is required</p>
-              )}
-            </div>
-
-            {/* Program */}
-            <div>
-              <label className="text-sm text-gray-300">
-                Preferred Program *
-              </label>
-              <select
-                {...register("program", { required: true })}
-                className="mt-2 w-full rounded-lg bg-[#f5f5f5] px-4 py-3 text-black focus:outline-none focus:ring-2 focus:ring-orange-500"
-              >
-                <option value="">Select a program</option>
-                <option>Weight Training</option>
-                <option>Fat Loss</option>
-                <option>Personal Training</option>
-                <option>CrossFit</option>
-                <option>Zumba / Cardio</option>
-              </select>
-            </div>
-
-            {/* Submit */}
-            <button
-              type="submit"
-              disabled={!requiredFieldsFilled || isSubmitting || !isValid}
-              className={`w-full py-4 rounded-xl font-semibold text-lg transition-all duration-300 ${
-                requiredFieldsFilled
-                  ? "bg-orange-500 hover:bg-orange-600 text-black"
-                  : "bg-gray-600 text-gray-300 cursor-not-allowed"
-              }`}
+          ) : (
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="bg-[#141414] rounded-2xl p-8 space-y-6"
             >
-              {isSubmitting ? "Booking..." : "Book Free Trial"}
-            </button>
-          </form>
+              {/* Name */}
+              <div>
+                <label className="text-sm text-gray-300">Full Name *</label>
+                <input
+                  type="text"
+                  {...register("name", { required: true })}
+                  placeholder="Enter your full name"
+                  className="mt-2 w-full rounded-lg bg-[#f5f5f5] px-4 py-3 text-black focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
+                {errors.name && (
+                  <p className="text-red-500 text-xs mt-1">Name is required</p>
+                )}
+              </div>
+
+              {/* Phone */}
+              <div>
+                <label className="text-sm text-gray-300">Phone Number *</label>
+                <input
+                  type="tel"
+                  {...register("phone", { required: true })}
+                  placeholder="Enter your phone number"
+                  className="mt-2 w-full rounded-lg bg-[#f5f5f5] px-4 py-3 text-black focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
+                {errors.phone && (
+                  <p className="text-red-500 text-xs mt-1">
+                    Phone number is required
+                  </p>
+                )}
+              </div>
+
+              {/* Email */}
+              <div>
+                <label className="text-sm text-gray-300">Email Address *</label>
+                <input
+                  type="email"
+                  {...register("email", { required: true })}
+                  placeholder="Enter your email"
+                  className="mt-2 w-full rounded-lg bg-[#f5f5f5] px-4 py-3 text-black focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-xs mt-1">Email is required</p>
+                )}
+              </div>
+
+              {/* Program */}
+              <div>
+                <label className="text-sm text-gray-300">
+                  Preferred Program *
+                </label>
+                <select
+                  {...register("program", { required: true })}
+                  className="mt-2 w-full rounded-lg bg-[#f5f5f5] px-4 py-3 text-black focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >
+                  <option value="">Select a program</option>
+                  <option>Weight Training</option>
+                  <option>Fat Loss</option>
+                  <option>Personal Training</option>
+                  <option>CrossFit</option>
+                  <option>Zumba / Cardio</option>
+                </select>
+              </div>
+
+              {/* Submit */}
+              <button
+                type="submit"
+                disabled={!requiredFieldsFilled || isSubmitting || !isValid}
+                className={`w-full py-4 rounded-xl font-semibold text-lg transition-all duration-300 ${
+                  requiredFieldsFilled
+                    ? "bg-orange-500 hover:bg-orange-600 text-black"
+                    : "bg-gray-600 text-gray-300 cursor-not-allowed"
+                }`}
+              >
+                {isSubmitting ? "Booking..." : "Book Free Trial"}
+              </button>
+            </form>
+          )}
+
+          {/* LEFT — FORM */}
 
           {/* RIGHT — CONTACT + MAP */}
           <div className="space-y-8">
