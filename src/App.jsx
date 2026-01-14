@@ -11,10 +11,31 @@ import GallerySection from "./components/GallerySection";
 import CallToAction from "./components/CallToAction";
 import ContactFreeTrialSection from "./components/ContactFreeTrialSection";
 import Footer from "./components/Footer";
+import Loader from "./components/Loader";
+import { useState, useEffect } from "react";
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const handleLoad = () => {
+      setIsLoading(false);
+    };
+
+    // If page already loaded (fast refresh case)
+    if (document.readyState === "complete") {
+      setIsLoading(false);
+    } else {
+      window.addEventListener("load", handleLoad);
+    }
+
+    return () => window.removeEventListener("load", handleLoad);
+  }, []);
+
   return (
     <>
+      <Loader isLoading={isLoading} />
+
       <Header />
       <Hero videoSrc={HeroVideo} />
       <About />
