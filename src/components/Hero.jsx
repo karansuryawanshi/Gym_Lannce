@@ -1,12 +1,13 @@
 import React from "react";
 
-const Hero = ({ videoSrc }) => {
+const Hero = ({ videoSrc, onVideoLoaded }) => {
   return (
     <section className="relative min-h-screen w-full bg-black text-white overflow-hidden">
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
         src={videoSrc}
+        onLoadedData={onVideoLoaded}
         autoPlay
         loop
         muted

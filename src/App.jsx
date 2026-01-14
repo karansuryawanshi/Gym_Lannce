@@ -35,18 +35,19 @@ const App = () => {
   return (
     <>
       <Loader isLoading={isLoading} />
-
-      <Header />
-      <Hero videoSrc={HeroVideo} />
-      <About />
-      <Programs />
-      <PricingSection />
-      <TrainersSection />
-      <SuccessStories />
-      <GallerySection />
-      <CallToAction />
-      <ContactFreeTrialSection />
-      <Footer />
+      <div className={isLoading ? "pointer-events-none" : ""}>
+        <Header />
+        <Hero videoSrc={HeroVideo} onVideoLoaded={() => setIsLoading(false)} />
+        <About />
+        <Programs />
+        <PricingSection />
+        <TrainersSection />
+        <SuccessStories />
+        <GallerySection />
+        <CallToAction />
+        <ContactFreeTrialSection />
+        <Footer />
+      </div>
     </>
   );
 };
